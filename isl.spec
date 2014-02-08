@@ -5,7 +5,7 @@
 Summary:	Integer Set Library
 Name:		isl
 Version:	0.11.2
-Release:	1
+Release:	2
 License:	MIT
 Group:		System/Libraries
 Url:		http://www.kotnet.org/~skimo/isl/
