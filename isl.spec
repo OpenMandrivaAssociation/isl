@@ -4,14 +4,12 @@
 
 Summary:	Integer Set Library
 Name:		isl
-Version:	0.12.2
+Version:	0.12.3
 Release:	1
 License:	MIT
 Group:		System/Libraries
 Url:		git://repo.or.cz/isl.git
-Source0:	ftp://gcc.gnu.org/pub/gcc/infrastructure/%{name}-%{version}.tar.bz2
-# See http://gcc.gnu.org/bugzilla/show_bug.cgi?id=58012
-Patch0:		isl-no-iostream.patch
+Source0:	ftp://gcc.gnu.org/pub/gcc/infrastructure/%{name}-%{version}.tar.xz
 BuildRequires:	gmp-devel
 
 %description
@@ -58,7 +56,7 @@ Header files for the isl Integer Set Library.
 autoreconf -fi
 
 %build
-%configure
+%configure --disable-static
 %make
 
 %check
