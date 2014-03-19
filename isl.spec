@@ -58,7 +58,7 @@ Header files for the isl Integer Set Library.
 autoreconf -fi
 
 %build
-%configure
+%configure --disable-static
 %make
 
 %check
