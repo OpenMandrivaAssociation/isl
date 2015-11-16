@@ -1,15 +1,16 @@
-%define major	10
+%define major	13
 %define libname	%mklibname %{name} %{major}
 %define devname	%mklibname %{name} -d
+%define staticname %mklibname %{name} -s -d
 
 Summary:	Integer Set Library
 Name:		isl
-Version:	0.12.2
-Release:	1
+Version:	0.13
+Release:	0.1
 License:	MIT
 Group:		System/Libraries
 Url:		git://repo.or.cz/isl.git
-Source0:	ftp://gcc.gnu.org/pub/gcc/infrastructure/%{name}-%{version}.tar.bz2
+Source0:	http://isl.gforge.inria.fr/isl-0.13.tar.xz
 # See http://gcc.gnu.org/bugzilla/show_bug.cgi?id=58012
 Patch0:		isl-no-iostream.patch
 BuildRequires:	gmp-devel
@@ -47,10 +48,17 @@ Summary:	Development files for the isl Integer Set Library
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{_lib}isl-static-devel < 0.11.1-3
 
 %description -n	%{devname}
 Header files for the isl Integer Set Library.
+
+%package -n	%{staticname}
+Summary:	Static library for the isl Integer Set Library
+Group:		Development/C
+Requires:	%{devname} = %{EVRD}
+
+%description -n	%{staticname}
+Static library for the isl Integer Set Library
 
 %prep
 %setup -q
@@ -58,7 +66,7 @@ Header files for the isl Integer Set Library.
 autoreconf -fi
 
 %build
-%configure --disable-static
+%configure2_5x --enable-static
 %make
 
 %check
@@ -68,14 +76,15 @@ make check
 %install
 %makeinstall_std
 
-# (tpg) not needed ?
-rm -rf %{buildroot}%{_libdir}/*%{name}*-gdb.py
-
 %files -n %{libname}
-%{_libdir}/libisl.so.%{major}*
+%{_libdir}/libisl.so.%{major}
+%{_libdir}/libisl.so.%{major}.[0-9].[0-9]
 
 %files -n %{devname}
 %{_libdir}/libisl.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*.pc
+%{_libdir}/*%{name}*-gdb.py
 
+%files -n %{staticname}
+%{_libdir}/*.a
