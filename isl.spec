@@ -1,16 +1,16 @@
-%define major	13
+%define major 15
 %define libname	%mklibname %{name} %{major}
 %define devname	%mklibname %{name} -d
 %define staticname %mklibname %{name} -s -d
 
 Summary:	Integer Set Library
 Name:		isl
-Version:	0.13
+Version:	0.16.1
 Release:	0.1
 License:	MIT
 Group:		System/Libraries
 Url:		git://repo.or.cz/isl.git
-Source0:	http://isl.gforge.inria.fr/isl-0.13.tar.xz
+Source0:	http://isl.gforge.inria.fr/isl-%{version}.tar.xz
 # See http://gcc.gnu.org/bugzilla/show_bug.cgi?id=58012
 Patch0:		isl-no-iostream.patch
 BuildRequires:	gmp-devel
