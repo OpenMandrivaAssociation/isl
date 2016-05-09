@@ -6,7 +6,7 @@
 Summary:	Integer Set Library
 Name:		isl
 Version:	0.16.1
-Release:	0.1
+Release:	0.2
 License:	MIT
 Group:		System/Libraries
 Url:		git://repo.or.cz/isl.git
@@ -76,6 +76,8 @@ make check
 %install
 %makeinstall_std
 
+mkdir -p %{buildroot}/%{_datadir}/gdb/auto-load/%{_libdir}
+mv %{buildroot}/%{_libdir}/*.py %{buildroot}/%{_datadir}/gdb/auto-load/%{_libdir}
 %files -n %{libname}
 %{_libdir}/libisl.so.%{major}
 %{_libdir}/libisl.so.%{major}.[0-9].[0-9]
@@ -84,7 +86,7 @@ make check
 %{_libdir}/libisl.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*.pc
-%{_libdir}/*%{name}*-gdb.py
+%{_datadir}/gdb/auto-load/%{_libdir}/*%{name}*-gdb.py
 
 %files -n %{staticname}
 %{_libdir}/*.a
