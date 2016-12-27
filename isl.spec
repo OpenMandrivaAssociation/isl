@@ -1,12 +1,15 @@
-%define major	15
-%define libname	%mklibname %{name} %{major}
-%define devname	%mklibname %{name} -d
+%define major 15
+%define libname %mklibname %{name} %{major}
+%define devname %mklibname %{name} -d
 %define staticname %mklibname %{name} -s -d
+
+# (tpg) optimize it a bit
+%global optflags %optflags -O3
 
 Summary:	Integer Set Library
 Name:		isl
-Version:	0.16.1
-Release:	2
+Version:	0.18
+Release:	1
 License:	MIT
 Group:		System/Libraries
 Url:		git://repo.or.cz/isl.git
