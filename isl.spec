@@ -1,4 +1,4 @@
-%define major 21
+%define major 22
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define staticname %mklibname %{name} -s -d
@@ -11,7 +11,7 @@ Name:		isl
 # BIG FAT WARNING: gcc requires isl. That includes the parts of gcc used by
 # clang. When updating to a version that changes the soname, you MUST build
 # a compat package for the old version FIRST (see isl13, isl15 packages).
-Version:	0.21
+Version:	0.22
 Release:	1
 License:	MIT
 Group:		System/Libraries
