@@ -12,7 +12,7 @@ Name:		isl
 # clang. When updating to a version that changes the soname, you MUST build
 # a compat package for the old version FIRST (see isl13, isl15 packages).
 Version:	0.22
-Release:	1
+Release:	2
 License:	MIT
 Group:		System/Libraries
 Url:		git://repo.or.cz/isl.git
