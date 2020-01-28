@@ -11,8 +11,8 @@ Name:		isl
 # BIG FAT WARNING: gcc requires isl. That includes the parts of gcc used by
 # clang. When updating to a version that changes the soname, you MUST build
 # a compat package for the old version FIRST (see isl13, isl15 packages).
-Version:	0.22
-Release:	2
+Version:	0.22.1
+Release:	1
 License:	MIT
 Group:		System/Libraries
 Url:		git://repo.or.cz/isl.git
