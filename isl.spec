@@ -1,3 +1,5 @@
+%define debug_package %{nil} 
+
 # isl is used by PollyISL, PollyISL is used by mesa
 %ifarch %{x86_64}
 %bcond_without compat32
