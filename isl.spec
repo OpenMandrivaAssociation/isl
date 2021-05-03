@@ -7,7 +7,7 @@
 %bcond_with compat32
 %endif
 
-%define major 22
+%define major 23
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define staticname %mklibname %{name} -s -d
@@ -23,7 +23,7 @@ Name:		isl
 # BIG FAT WARNING: gcc requires isl. That includes the parts of gcc used by
 # clang. When updating to a version that changes the soname, you MUST build
 # a compat package for the old version FIRST (see isl13, isl15 packages).
-Version:	0.23
+Version:	0.24
 Release:	1
 License:	MIT
 Group:		System/Libraries
@@ -122,17 +122,17 @@ export CONFIGURE_TOP="$(pwd)"
 %if %{with compat32}
 mkdir build32
 cd build32
-%configure32 --enable-static
+%configure32 --enable-static --enable-portable-binary CFLAGS="%{optflags} -m32"
 cd ..
 %endif
 
 mkdir build
 cd build
-%configure --enable-static
+%configure --enable-static --enable-portable-binary CFLAGS="%{optflags}"
 
 %build
 %if %{with compat32}
-%make_build -C build32
+%make_build -C build32 CFLAGS="%{optflags} -m32"
 %endif
 %make_build -C build
 
