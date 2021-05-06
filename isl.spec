@@ -1,5 +1,3 @@
-%define debug_package %{nil} 
-
 # isl is used by PollyISL, PollyISL is used by mesa
 %ifarch %{x86_64}
 %bcond_without compat32
@@ -134,7 +132,7 @@ cd build
 %if %{with compat32}
 %make_build -C build32 CFLAGS="%{optflags} -m32"
 %endif
-%make_build -C build
+%make_build -C build CFLAGS="%{optflags}"
 
 %check
 # All tests must pass
