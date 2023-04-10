@@ -134,12 +134,14 @@ cd build
 %endif
 %make_build -C build CFLAGS="%{optflags}"
 
+%if ! %{cross_compiling}
 %check
 # All tests must pass
 %if %{with compat32}
 %make_build -C build32 check
 %endif
 %make_build -C build check
+%endif
 
 %install
 %if %{with compat32}
