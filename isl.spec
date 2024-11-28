@@ -21,7 +21,7 @@ Name:		isl
 # BIG FAT WARNING: gcc requires isl. That includes the parts of gcc used by
 # clang. When updating to a version that changes the soname, you MUST build
 # a compat package for the old version FIRST (see isl13, isl15 packages).
-Version:	0.26
+Version:	0.27
 Release:	1
 License:	MIT
 Group:		System/Libraries
@@ -141,8 +141,10 @@ cd build
 %check
 # All tests must pass
 %if %{with compat32}
+export LD_LIBRARY_PATH=`pwd`/build/.libs:`pwd`/build32/.libs
 %make_build -C build32 check
 %endif
+export LD_LIBRARY_PATH=`pwd`/build/.libs
 %make_build -C build check
 %endif
 
