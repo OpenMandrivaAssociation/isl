@@ -30,6 +30,11 @@ Url:		https://libisl.sourceforge.io/
 # git://repo.or.cz/isl.git
 # https://isl.gforge.inria.fr/
 Source0:	https://libisl.sourceforge.io/isl-%{version}.tar.xz
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(gmp)
 %if %{with compat32}
 BuildRequires:	devel(libgmp)
